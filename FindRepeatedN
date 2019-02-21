@@ -1,0 +1,26 @@
+import java.util.HashMap;
+public class FindRepeatedN{
+
+     public static int repeatedNTimes(int[] A) {
+        HashMap<Integer, Integer> myMap = new HashMap<Integer, Integer>(); 
+        int target = 0; 
+        //the intuition here is that... since there are N+1 unique numbers and the rest is a repeat of one of the N+1 numbers
+        //so we actually only need to find the number that stars to repeat and return it
+        //no matter how many times a number repeats, it only need to start to repeat then we know since others are all unique numbers in the array
+        for(int i=0; i<A.length; i++){
+            if(!myMap.containsKey(A[i])) {
+                myMap.put(A[i], 1); 
+            }
+            else {
+                target=A[i]; 
+                break; 
+            }
+        }
+        return target; 
+     }
+     public static void main(String []args){
+        int [] array = {5, 3, 4, 8, 4, 4 };
+        int answer = repeatedNTimes(array); 
+        System.out.println("answer is "+answer);
+     }
+}
